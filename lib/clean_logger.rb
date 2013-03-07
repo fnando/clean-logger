@@ -4,7 +4,10 @@ require "clean_logger/railtie"
 
 module CleanLogger
   class Logger < ::Logger
-    def info(message)
+    def info(*args, &block)
+      message = args.first
+
+      return super unless message
       return if message.include?(%[Started GET "/assets/])
       return if message.blank? && @blank_message
 
