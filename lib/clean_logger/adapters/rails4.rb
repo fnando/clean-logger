@@ -11,6 +11,7 @@ module CleanLogger
       return super unless message
       return if message.include?(%[Started GET "/assets/])
       return if message.include?(%[Served asset])
+      return if message.include?(%[Compiled])
       return if message.blank? && @blank_message
 
       @blank_message = message.blank?
